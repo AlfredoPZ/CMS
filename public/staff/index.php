@@ -5,7 +5,13 @@
 
 <?php include(SHARED_PATH . "/staff/header.php"); ?>
 
-<main id="content"></main>
+<main id="content">
+    <aside id="main-menu"></aside>
+    <h2>Main menu</h2>
+    <ul>
+        <li><a href="subjects/index.php">Subjects</a></li>
+    </ul>
+</main>
 
 <?php include(SHARED_PATH . "/staff/footer.php"); ?>
 
