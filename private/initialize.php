@@ -21,6 +21,12 @@
         ['id' => '3', 'position' => '3', 'visible' => '1', 'menu_name' => 'Small Business'],
         ['id' => '4', 'position' => '4', 'visible' => '1', 'menu_name' => 'Commercial'],
     ];
+    $pages = [
+        ['id' => '1', 'position' => '1', 'visible' => '1', 'page_name' => 'Globe Bank'],
+        ['id' => '2', 'position' => '2', 'visible' => '1', 'page_name' => 'History'],
+        ['id' => '3', 'position' => '3', 'visible' => '1', 'page_name' => 'Leadership'],
+        ['id' => '4', 'position' => '4', 'visible' => '1', 'page_name' => 'Contact Us'],
+    ];
     
     require_once("functions.php");
 
