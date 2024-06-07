@@ -1,17 +1,9 @@
 <?php require_once("../../../private/initialize.php") ?>
 <?php 
-    $test = $_GET["test"] ?? 200;
+    $id = (int) $_GET["id"] ?? 1;
+    $data = $subjects[$id];
 
-    if($test == "404") {
-        header("Location: " . url_for("info/404.php"));
-    } elseif ($test == "500") {
-        error_500();
-    } elseif($test == "redirect") {
-       redirect_to(url_for("staff/subjects/index.php"));
-    } else {
-        // echo "No error";
-    }
-
+    
 ?>
 
 <?php $page_title = 'Create Subject'; ?>
@@ -24,16 +16,16 @@
   <div class="subject edit">
     <h1>Edit Subject</h1>
 
-    <form action="" method="post">
+    <form action="<?php echo url_for("/staff/subjects/create.php"); ?>" method="post">
       <dl>
         <dt>Menu Name</dt>
-        <dd><input type="text" name="menu_name" value="" /></dd>
+        <dd><input type="text" name="menu_name" value="<?php echo $data["menu_name"] ?>" /></dd>
       </dl>
       <dl>
         <dt>Position</dt>
         <dd>
           <select name="position">
-            <option value="1">1</option>
+            <option value="<?php echo $data["position"] ?>"><?php echo $data["position"] ?></option>
           </select>
         </dd>
       </dl>
