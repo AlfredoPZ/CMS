@@ -11,7 +11,7 @@
 
 <main id="content">
     <aside id="main-menu"></aside>
-    <?php  echo $id;     ?>
+    <?php  echo h($id);     ?>
 
     <a href="show.php?name=<?php echo u("John Doe"); ?>">Name</a>
     <a href="show.php?company=<?php echo u("Widgets&More"); ?>">Company</a>
