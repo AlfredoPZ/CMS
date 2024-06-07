@@ -9,7 +9,7 @@
     <aside id="main-menu"></aside>
     <h2>Main menu</h2>
     <ul>
-        <li><a href="subjects/index.php">Subjects</a></li>
+        <li><a href="subjects">Subjects</a></li>
     </ul>
 </main>
 

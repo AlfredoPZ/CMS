@@ -1,7 +1,7 @@
 <?php
     
-    define("PRIVATE_PATH", dirname(__FILE__));
-    define("PROJECT_PATH", dirname(PRIVATE_PATH));
+    define("PRIVATE_PATH", dirname(__FILE__)); // /app/private
+    define("PROJECT_PATH", dirname(PRIVATE_PATH)); // /app
     define("PUBLIC_PATH", PROJECT_PATH . "/public");
     define("SHARED_PATH", PRIVATE_PATH . "/shared");
     // Assign the root URL to a PHP constant
@@ -15,7 +15,12 @@
     $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
     define("WWW_ROOT", $doc_root);
 
-    
+    $subjects = [
+        ['id' => '1', 'position' => '1', 'visible' => '1', 'menu_name' => 'About Globe Bank'],
+        ['id' => '2', 'position' => '2', 'visible' => '1', 'menu_name' => 'Consumer'],
+        ['id' => '3', 'position' => '3', 'visible' => '1', 'menu_name' => 'Small Business'],
+        ['id' => '4', 'position' => '4', 'visible' => '1', 'menu_name' => 'Commercial'],
+    ];
     
     require_once("functions.php");
 
