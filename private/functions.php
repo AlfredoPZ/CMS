@@ -20,3 +20,18 @@ function raw_u($string = "") {
 function h($string = "") {
     return htmlspecialchars($string);
 }
+
+function error_404( ) {
+    header($_SERVER["SERVER_PROTOCOL"] . " 404 not found");
+    exit();
+}
+
+function error_500() {
+    header($_SERVER["SERVER_PROTOCOL"] . " 500 internal server error");
+    exit();
+}
+
+function redirect_to($location) {
+    header("Location: index.php");
+    exit();
+}
