@@ -1,6 +1,8 @@
 <?php
     require_once("../../../private/initialize.php");
     $page_title = "Staff Subjects";
+
+    $subject_set = find_all_subjects();
   
 ?>
 
@@ -25,7 +27,7 @@
         <th>&nbsp;</th>
   	  </tr>
 
-      <?php foreach($subjects as $subject) { ?>
+      <?php while($subject = mysqli_fetch_assoc($subject_set)) { ?>
         <tr>
           <td><?php echo $subject['id']; ?></td>
           <td><?php echo $subject['position']; ?></td>
@@ -37,6 +39,8 @@
     	  </tr>
       <?php } ?>
   	</table>
+
+    <?php mysqli_free_result($subject_set); ?>
 
   </div>
 </main>
