@@ -10,7 +10,7 @@
 
     function find_all_pages() {
         global $db;
-        $sql = "SELECT * FROM pages ORDER BY  position ASC";
+        $sql = "SELECT * FROM pages ORDER BY  subject_id, position ASC";
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
         return $result;
