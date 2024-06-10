@@ -1,21 +1,36 @@
-
 <?php
-    require_once("../../../private/initialize.php");
-    $page_title = "Hello";
+require_once("../../../private/initialize.php");
+$page_title = "Hello";
 
-    $id = $_GET["id"] ?? "1";
-?>  
+$id = $_GET["id"] ?? "1";
+
+$data = find_subject_by_id($id);
+$subject = mysqli_fetch_assoc($data);
+mysqli_free_result($data);
+?>
 
 
 <?php include(SHARED_PATH . "/staff/header.php"); ?>
 
 <main id="content">
     <aside id="main-menu"></aside>
-    <?php  echo h($id);     ?>
+    <h1>Subject: <?php echo h($subject['menu_name']); ?></h1>
 
-    <a href="show.php?name=<?php echo u("John Doe"); ?>">Name</a>
-    <a href="show.php?company=<?php echo u("Widgets&More"); ?>">Company</a>
-    <a href="show.php?query=<?php echo u("!#*?"); ?>">Query</a>
+    <div class="attributes">
+        <dl>
+            <dt>Menu Name</dt>
+            <dd><?php echo h($subject['menu_name']); ?></dd>
+        </dl>
+        <dl>
+            <dt>Position</dt>
+            <dd><?php echo h($subject['position']); ?></dd>
+        </dl>
+        <dl>
+            <dt>Visible</dt>
+            <dd><?php echo $subject['visible'] == '1' ? 'true' : 'false'; ?></dd>
+        </dl>
+    </div>
+
 </main>
 
 <?php include(SHARED_PATH . "/staff/footer.php"); ?>
