@@ -2,6 +2,8 @@
 <?php
     require_once("../../../private/initialize.php");
     $page_title = "Pages";
+
+    $pages_set = find_all_pages();
 ?>  
 
 
@@ -23,19 +25,19 @@
             <th>&nbsp;</th>
         </tr>
 
-        <?php foreach($pages as $page) : ?>
+        <?php while($page = mysqli_fetch_assoc($pages_set)) { ?>
             <tr>
                 <td><?php echo h($page["id"]); ?></td>
                 <td><?php echo h($page["position"]); ?></td>
                 <td><?php echo $page["visible"] == 1 ? "true" : "false"; ?></td>
-                <td><?php echo h($page["page_name"]); ?></td>
+                <td><?php echo h($page["menu_name"]); ?></td>
                 <td><a class="action" href="<?php echo url_for("/staff/pages/show.php?id=" . h(u($page["id"])));?>">View</a></td>
                 <td><a class="action" href="<?php echo url_for("/staff/pages/edit.php?id=" . h(u($page["id"])));?>">Edit</a></td>
                 <td><a class="action" href="">Delete</a></td>
             </tr>
-        <?php endforeach;  ?>
+        <?php } ?>
     </table>
-
+    <?php mysqli_free_result($pages_set) ?>
 </main>
 
 <?php include(SHARED_PATH . "/staff/footer.php"); ?>
