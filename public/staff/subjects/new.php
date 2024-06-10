@@ -1,18 +1,4 @@
 <?php require_once("../../../private/initialize.php") ?>
-<?php 
-    $test = $_GET["test"] ?? 200;
-
-    if($test == "404") {
-        header("Location: " . url_for("info/404.php"));
-    } elseif ($test == "500") {
-        error_500();
-    } elseif($test == "redirect") {
-       redirect_to(url_for("staff/subjects/index.php"));
-    } else {
-        // echo "No error";
-    }
-
-?>
 
 <?php $page_title = 'Create Subject'; ?>
 <?php include(SHARED_PATH . '/staff/header.php'); ?>
