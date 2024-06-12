@@ -112,4 +112,26 @@
         }
     }
 
+    function update_page($page) {
+        global $db;
+        $sql = "UPDATE pages SET ";
+        $sql .= "subject_id='" . $page["subject_id"] . "',";
+        $sql .= "menu_name='" . $page["menu_name"] . "',";
+        $sql .= "position='" . $page["position"] . "',";
+        $sql .= "visible='" . $page["visible"] . "',";
+        $sql .= "content='" . $page["content"] . "' ";
+        $sql .= "WHERE id='".$page["id"]."' ";
+        $sql .= "LIMIT 1";
+        $result = mysqli_query($db, $sql);
+        // for inser statements, $result is true/false
+
+        if($result) {
+            return true;
+        }else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;
+        }
+    }
+
 ?>
