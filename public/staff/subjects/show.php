@@ -4,15 +4,15 @@ $page_title = "Hello";
 
 $id = $_GET["id"] ?? "1";
 
-$data = find_subject_by_id($id);
-$subject = mysqli_fetch_assoc($data);
-mysqli_free_result($data);
+$subject = find_subject_by_id($id);
+
 ?>
 
 
 <?php include(SHARED_PATH . "/staff/header.php"); ?>
 
 <main id="content">
+    <a class="back-link" href="<?php echo url_for('/staff/subjects/index.php'); ?>">&laquo; Back to List</a>
     <aside id="main-menu"></aside>
     <h1>Subject: <?php echo h($subject['menu_name']); ?></h1>
 
