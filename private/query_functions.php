@@ -57,6 +57,20 @@
         }
     }
 
+    function delete_subject($id) {
+        global $db;
+        $sql = "DELETE FROM subjects WHERE id='" . $id . "' LIMIT 1";
+        $result = mysqli_query($db, $sql);
+        if($result) {
+            return true;
+            
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;
+        }
+    }
+
     function find_all_pages() {
         global $db;
         $sql = "SELECT * FROM pages ORDER BY  subject_id, position ASC";
