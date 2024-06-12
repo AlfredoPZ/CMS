@@ -134,4 +134,20 @@
         }
     }
 
+    function delete_page($id) {
+        global $db;
+
+        $sql = "DELETE FROM pages WHERE id='" . $id . "' LIMIT 1";
+        $result = mysqli_query($db, $sql);
+
+        if($result) {
+            return true;
+            
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;
+        }
+    }
+
 ?>
