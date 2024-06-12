@@ -31,6 +31,7 @@ function validate_subject($subject)
 
     return $errors;
 }
+    
 
     function find_all_subjects() {
         global $db;
