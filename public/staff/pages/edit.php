@@ -99,5 +99,5 @@ if (is_post_request()) {
   </div>
 
 </div>
-
+<?php mysqli_free_result($subject_set); ?>
 <?php include(SHARED_PATH . '/staff/footer.php'); ?>
