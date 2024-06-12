@@ -31,6 +31,7 @@
     require_once("functions.php");
     require_once("database.php");
     require_once("query_functions.php");
+    require_once('validations_functions.php');
 
     $db = db_connected();
 
