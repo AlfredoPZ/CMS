@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GL bank</title>
-</head>
-<body>
-    <header>
-        <h1>GL Bank: Comming soon!</h1>
-    </header>
+<?php require_once('../private/initialize.php'); ?>
 
+<?php include(SHARED_PATH . '/public/header.php'); ?>
 
-</body>
-</html>
+<div id="main">
+
+    <div id="page">
+
+    </div>
+
+</div>
+
+<?php include(SHARED_PATH . '/public/footer.php'); ?>
