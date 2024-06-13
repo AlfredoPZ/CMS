@@ -21,7 +21,11 @@ if (is_post_request()) {
   $page["content"] = $_POST["content"] ?? "";
 
   $result = update_page($page);
-  redirect_to(url_for("staff/pages/show.php?id=" . $id));
+  if($result === true) {
+    redirect_to(url_for('/staff/pages/show.php?id=' . $id));
+  } else {
+    $errors = $result;
+  }
 
 } else {
   $page = find_page_by_id($id);
@@ -40,7 +44,7 @@ if (is_post_request()) {
 
   <div class="subject edit">
     <h1>Edit Subject</h1>
-
+    <?php echo display_errors($errors); ?>
     <form action="<?php echo url_for("/staff/pages/edit.php?id=" . h(u($id))); ?>" method="POST">
       <dl>
         <dt>Subject</dt>
