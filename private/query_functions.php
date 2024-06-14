@@ -31,9 +31,14 @@
         return $errors;
     }
     
-    function find_all_subjects() {
+    function find_all_subjects($options=[]) {
         global $db;
-        $sql = "SELECT * FROM subjects ORDER BY position ASC";
+        $visible = $options["visible"] ?? false;
+        $sql = "SELECT * FROM subjects ";
+        if($visible) {
+            $sql .= " WHERE visible = true ";
+        }
+        $sql .= " ORDER BY position ASC";
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
         return $result;
@@ -245,9 +250,14 @@
         }
     }
 
-    function find_pages_by_subject_id($id) {
+    function find_pages_by_subject_id($id, $options = []) {
         global $db;
-        $sql = "SELECT * FROM pages WHERE subject_id = '" . db_escape($db, $id) ."' ORDER BY position ASC";
+        $visible = $options["visible"] ?? false;
+        $sql = "SELECT * FROM pages WHERE subject_id = '" . db_escape($db, $id) ."' "; 
+        if($visible) {
+            $sql .= " AND visible = true ";
+        }
+        $sql .= "ORDER BY position ASC";
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
         return $result;
