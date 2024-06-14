@@ -7,9 +7,10 @@
 
         if(!$page) {
             redirect_to(url_for("/index.php"));
-        } else {
+        } 
 
-        }
+        $subject_id = $page["subject_id"];
+
     } else {
 
     }
