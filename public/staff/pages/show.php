@@ -17,6 +17,11 @@ $page = find_page_by_id($id);
     <h1>page: <?php echo h($page['menu_name']); ?></h1>
 
     <div class="attributes">
+        <?php $subject = find_subject_by_id($page['subject_id']); ?>
+        <dl>
+            <dt>Subject</dt>
+            <dd><?php echo h($subject['menu_name']); ?></dd>
+        </dl>
         <dl>
             <dt>Menu Name</dt>
             <dd><?php echo h($page['menu_name']); ?></dd>
@@ -28,6 +33,10 @@ $page = find_page_by_id($id);
         <dl>
             <dt>Visible</dt>
             <dd><?php echo $page['visible'] == '1' ? 'true' : 'false'; ?></dd>
+        </dl>
+        <dl>
+            <dt>Content</dt>
+            <dd><?php echo h($page['content']); ?></dd>
         </dl>
     </div>
 

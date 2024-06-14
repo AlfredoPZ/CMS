@@ -5,9 +5,9 @@
 <main id="main">
 
     <?php include(SHARED_PATH . "/public/navigation.php"); ?>
-
+    
     <div id="page">
-
+        <?php include(SHARED_PATH . "/static/homepage.php"); ?>
     </div>
 
 </main>
