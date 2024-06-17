@@ -1,19 +1,16 @@
-<?php require_once('../private/initialize.php'); ?>
-
 <?php 
+    require_once('../private/initialize.php');
     if(isset($_GET["id"])) {
         $page_id = $_GET["id"];
         $page = find_page_by_id($page_id, ["visible" => true]);
-
         if(!$page) {
-            redirect_to(url_for("/index.php"));
+            redirect_to(url_for("index.php"));
         } 
-
+        
         $subject_id = $page["subject_id"];
         $subject = find_subject_by_id($subject_id, ["visible" => true]);
-
-        if(!$subject) {
-            redirect_to(url_for("/index.php"));
+            if(!$subject) {
+            redirect_to(url_for("index.php"));
         } 
         
     } elseif (isset($_GET["subject_id"])){

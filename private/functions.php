@@ -32,7 +32,7 @@ function error_500(){
 }
 
 function redirect_to($location) {
-    header("Location: index.php");
+    header("Location: " . $location);
     exit();
 }
 
