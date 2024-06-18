@@ -1,7 +1,7 @@
 <?php
 require_once('../../private/initialize.php');
 
-unset($_SESSION['username']);
+log_out_admin();
 // or you could use
 // $_SESSION['username'] = NULL;
 
