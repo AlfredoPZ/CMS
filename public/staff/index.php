@@ -11,6 +11,7 @@
     <ul>
         <li><a href="<?php echo url_for("/staff/subjects");?>">Subjects</a></li>
         <li><a href="<?php echo url_for("/staff/pages");?>">Pages</a></li>
+        <li><a href="<?php echo url_for('/staff/admins/index.php'); ?>">Admins</a></li>
     </ul>
 </main>
 
