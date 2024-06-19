@@ -1,13 +1,8 @@
 <?php
 require_once("../../../private/initialize.php");
 require_login();
-$page_set = find_all_pages();
-$page_count = mysqli_num_rows($page_set) + 1;
-mysqli_free_result($page_set);
-$page = [];
-$page["position"] = $page_count;
 
-$subject_set = find_all_subjects();
+
 
 if (is_post_request()) {
   $page = [];
@@ -17,9 +12,6 @@ if (is_post_request()) {
   $page["visible"] = $_POST["visible"] ?? "";
   $page["content"] = $_POST["content"] ?? "";
 
-  // var_dump($page);
-  // $result = insert_page($page);
-
   $result = insert_page($page);
   if($result === true) {
     $new_id = mysqli_insert_id($db);
@@ -28,8 +20,19 @@ if (is_post_request()) {
     $errors = $result;
   }
 
+} else {
+  $page["subject_id"] = $_GET["subject_id"] ?? "1";
+  $page["menu_name"] = "";
+  $page["position"] = "";
+  $page["visible"] = "";
+  $page["content"] = "";
 }
 
+$page_set = find_pages_by_subject_id($page["subject_id"]);
+$page_count = mysqli_num_rows($page_set) + 1;
+mysqli_free_result($page_set);
+$page["position"] = $page_count;
+$subject_set = find_all_subjects();
 
 ?>
 
@@ -38,7 +41,7 @@ if (is_post_request()) {
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/staff/pages/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('/staff/subjects/show.php?id='. h(u($page["subject_id"]))); ?>">&laquo; Back to subject</a>
 
   <div class="page new">
     <h1>Create Page</h1>
@@ -51,9 +54,9 @@ if (is_post_request()) {
         <dd>
           <select name="subject_id">
             <?php  while($subject = mysqli_fetch_assoc($subject_set)){ ?>
-              <option value="<?php echo $subject["id"] ?> "> <?php echo $subject["menu_name"]; ?> </option>
+              <option value="<?php echo $subject["id"] ?> " <?php if($subject["id"] == $page["subject_id"]) {echo " selected";} ?> > <?php echo $subject["menu_name"]; ?> </option>
             <?php } ?>
-          
+            
           </select>
         </dd>
       </dl>

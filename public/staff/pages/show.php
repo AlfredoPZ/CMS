@@ -6,14 +6,15 @@ $page_title = "Hello";
 $id = $_GET["id"] ?? "1";
 
 $page = find_page_by_id($id);
-
+$subject = find_subject_by_id($page['subject_id']);
 ?>
+
 
 
 <?php include(SHARED_PATH . "/staff/header.php"); ?>
 
 <main id="content">
-    <a class="back-link" href="<?php echo url_for('/staff/pages/index.php'); ?>">&laquo; Back to List</a>
+    <a class="back-link" href="<?php echo url_for('/staff/subjects/show.php?id='.h(u($subject["id"]))); ?>">&laquo; Back to subject</a>
     <aside id="main-menu"></aside>
     <h1>page: <?php echo h($page['menu_name']); ?></h1>
 
@@ -22,7 +23,6 @@ $page = find_page_by_id($id);
     </div>
 
     <div class="attributes">
-        <?php $subject = find_subject_by_id($page['subject_id']); ?>
         <dl>
             <dt>Subject</dt>
             <dd><?php echo h($subject['menu_name']); ?></dd>

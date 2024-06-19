@@ -39,7 +39,7 @@ $pages_set = find_pages_by_subject_id($subject["id"]);
 
         <h2>Pages</h2>
     
-        <div id="actions"><a href="<?php echo url_for("/staff/pages/new.php");?>">Create new page</a></div>
+        <div id="actions"><a href="<?php echo url_for("/staff/pages/new.php?subject_id=". h(u($subject["id"])));?>">Create new page</a></div>
     
         <table class="list">
             <tr>
