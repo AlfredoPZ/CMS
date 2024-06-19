@@ -283,6 +283,23 @@ function find_pages_by_subject_id($id, $options = [])
     return $result;
 }
 
+function count_pages_by_subject_id($id, $options = [])
+{
+    global $db;
+    $visible = $options["visible"] ?? false;
+    $sql = "SELECT count(id) AS count FROM pages WHERE subject_id = '" . db_escape($db, $id) . "' ";
+    if ($visible) {
+        $sql .= " AND visible = true ";
+    }
+    $sql .= "ORDER BY position ASC";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    $count = $row["count"];
+    return $count;
+}
+
 // Admins
 
 // Find all admins, ordered last_name, first_name
